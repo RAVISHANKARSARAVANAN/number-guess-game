@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GUESS GAME</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: cursive;
+    }
+    body {
+      background-color: black;
+    }
+    .content {
+      width: 90%;
+      max-width: 550px; /* Limiting width for larger screens */
+      height: 65vh;
+      border: 1px solid black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: navajowhite;
+    }
+    h1 {
+      text-align: center;
+      padding-top: 26px;
+      border-bottom: 5px solid black;
+      padding-bottom: 10px;
+      font-family: cursive;
+    }
+    #guessthenumber {
+      width: 70%;
+      padding: 10px;
+      margin-left: 15%;
+      margin-top: 40px;
+    }
+    button {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      padding: 10px;
+      background: transparent;
+      color: black;
+      font-size: 90%;
+      transition: 0.2s;
+    }
+    button:hover {
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      font-size: 110%;
+      border: 2px solid red;
+    }
+    #hr {
+      width: 60%;
+      margin-left: 20%;
+      border: 1.5px solid black;
+    }
+    #result,
+    #score {
+      padding-left: 10px;
+    }
+    pre {
+      font-family: cursive;
+    }
+    @media (max-width: 600px) {
+      .content {
+        width: 90%;
+        max-width: none; /* Removing the max-width for smaller screens */
+      }
+      #guessthenumber,
+      button,
+      #hr {
+        width: 80%;
+        margin-left: 10%;
+      }
+      button {
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+      #result,
+      #score {
+        padding-left: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>GUESS THE NUMBER 1 TO 10</h1>
+      <input type="number" id="guessthenumber"><br><br>
+      <button onclick="check()">CHECK</button><br><br>
+      <hr id="hr"><br><br>
+      <pre id="result">1.YOUR IS CORRECT/INCORRECT.</pre><br>
+      <pre id="score">2.YOUR TOTAL SCORE IS = 10.</pre>
+    </div>
+  </div>
+  <script>
+    var guessnumber = document.getElementById("guessthenumber");
+    var result = document.getElementById("result");
+    var score = document.getElementById("score");
+    var randomnumber = Math.floor(Math.random() * 10) + 1;
+    var totalscore = 10;
+
+    function check() {
+      var enternumber = Number(guessnumber.value);
+      if (randomnumber == enternumber) {
+        result.textContent = "YOUR GUESS IS CORRECT";
+        alert("your the winner");
+        totalscore = 10;
+        score.textContent = "YOUR SCORE IS =" + totalscore;
+      } else {
+        totalscore = totalscore - 1;
+        score.textContent = "YOUR SOCRE IS =" + totalscore;
+        result.textContent = "YOUR GUESS IS INCORRECT";
+      }
+    }
+  </script>
+</body>
+</html>
